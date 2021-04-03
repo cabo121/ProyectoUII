@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<body>
+
+	<div class="px-4">
+		<br>
+		<h1>Noticias Nacionales</h1>
+		<hr>
+		<div class="row">
+	    	<img src="{% static 'files/bannerNac.jpg' %}" height="350px"
+	    	width="1220px">
+    	</div>
+		<br>
+
+		<h2>Principales</h2>
+		<div class="row">
+				{% for nacionales in noticias_list %}
+				<div class=col-md-4>
+                    <br>
+					<p><strong>{{ nacionales.nombre }}</strong></p>
+			        <p>{{ nacionales.descripcion }}</p>
+			        <p><img src="{{ nacionales.imagen }}" height="180px" width="250px"></p>
+			        <p>{{ nacionales.fecha }}</p>
+			        <p>{{ nacionales.autor }}</p>
+			        <p>{{ nacionales.categoria }}</p>
+                    <br>   
+				</div>
+	    		{% endfor %}
+		</div>
+
+	</div>
+	<br><br>
+</body>
+
+{% endblock content %}

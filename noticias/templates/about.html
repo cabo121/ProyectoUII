@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+  <div class="row p-4">
+    <br>
+    <h1>Dejanos un comentario para nuestra pagina</h1>
+    <hr>
+    <br>
+      <img src="{% static 'files/banner.jpg' %}" height="300px"
+      width="1220px"> 
+  </div>
+  
+  <form class="row p-4">
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="inputEmail4">
+      </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Correo</label>
+        <input type="email" class="form-control" id="inputPassword4">
+      </div>
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">Direccion</label>
+        <input type="text" class="form-control" id="inputAddress">
+      </div>
+      <div class="col-md-12">
+          <label for="inputCity" class="form-label">Comentarios</label>
+          <textarea class="form-control btn-block" rows="5"></textarea>
+      </div>
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+  </form>
+  <br>
+
+ 
+{% endblock content %}

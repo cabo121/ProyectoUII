@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<body>
+	<div class="px-4">
+		<br>
+		<h1>Noticias del Coronavirus</h1>
+		<hr>
+		<div class="row">
+	    	<img src="{% static 'files/bannerCorona.jpg' %}" height="300px"
+	    	width="1220px">
+    	</div>
+		<br>
+
+		<h2>Principales</h2>
+		<div class="row">
+				{% for coronavirus in noticias_list %}
+				<div class=col-md-4>
+                    <br>
+					<p><strong>{{ coronavirus.nombre }}</strong></p>
+			        <p>{{ coronavirus.descripcion }}</p>
+			        <p><img src="{{ coronavirus.imagen }}" height="180px" width="250px"></p>
+			        <p>{{ coronavirus.fecha }}</p>
+			        <p>{{ coronavirus.autor }}</p>
+			        <p>{{ coronavirus.categoria }}</p>
+                    <br>   
+				</div>
+	    		{% endfor %}
+		</div>
+
+	</div>
+	<br><br>
+</body>
+
+{% endblock content %}

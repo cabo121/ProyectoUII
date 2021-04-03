@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+<div class="jumbotron p-4">
+    <h1 class="titulo" style="text-align: center;  font-size: 50px;"><strong>Noticias.COM</strong></h1>
+    <p class="lead" style="text-align: center;">Esta es una pagina donde se mostraran las mejores noticias en la actualidad, tanto nacionales e internacionales</p>
+    <hr>
+    <br>
+
+    <div class="row">
+    	<img src="{% static 'files/banner2.jpg' %}" height="300px"
+    	width="1220px">
+    </div>
+    <hr>
+    <br>
+
+    <div class="row">
+    	<h1 class="titulo"><strong>Noticias de ultimo momento</strong></h1>
+        <br>
+    	<div class="container">
+			<div class="row">
+				{% for coronavirus in noticias_list %}
+				<div class=col-md-4>
+                    <br>
+					<p><strong>{{ coronavirus.nombre }}</strong></p>
+			        <p>{{ coronavirus.descripcion }}</p>
+			        <p><img src="{{ coronavirus.imagen }}" height="180px" width="250px"></p>
+			        <p>{{ coronavirus.fecha }}</p>
+			        <p>{{ coronavirus.autor }}</p>
+			        <p>{{ coronavirus.categoria }}</p>
+                    <br>   
+				</div>
+	    		{% endfor %}
+			</div>
+		</div>
+    </div>
+    
+</div>
+
+{% endblock content %}
