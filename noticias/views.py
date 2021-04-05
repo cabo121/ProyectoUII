@@ -45,3 +45,9 @@ class RegistrarPageView (CreateView):
 	template_name = 'registrar.html'
 	form_class =  UserCreationForm
 	Success_url = reverse_lazy('home')
+
+class ResetPageView (CreateView):
+	model = User
+	form_class =  UserCreationForm
+	template_name = 'registration/reset.html'
+	Success_url = reverse_lazy('home')

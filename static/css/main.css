@@ -13,8 +13,8 @@ nav {
 }
 
 nav a{
-	  box-sizing:border-box;
-	  font-size:0;
+	box-sizing:border-box;
+	font-size:0;
       text-decoration:none;
       color:inherit;
       font-size:14px;

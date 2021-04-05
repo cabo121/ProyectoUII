@@ -1,5 +1,7 @@
+from django.contrib.auth import views as auth_views
 from django.urls import path
-from .views import RegistrarPageView,HomePageView,DeportesPageView,NacionalesPageView,InternacionalesPageView,CoronavirusPageView,NoticePageView,AboutPageView
+from django.conf.urls.static import static
+from .views import ResetPageView,RegistrarPageView,HomePageView,DeportesPageView,NacionalesPageView,InternacionalesPageView,CoronavirusPageView,NoticePageView,AboutPageView
 
 urlpatterns = [
 	path('',HomePageView.as_view(),name = 'home'),
@@ -10,5 +12,5 @@ urlpatterns = [
 	path('notice',NoticePageView.as_view(), name = 'notice'),
 	path('about',AboutPageView.as_view(), name = 'about'),
 	path('registrar/', RegistrarPageView.as_view(), name='registrar'),
-	path('registrar/', RegistrarPageView.as_view(), name='reset'),
+	path('registrar/reset',auth_views.PasswordResetView.as_view(), name='reset'),
 ]
