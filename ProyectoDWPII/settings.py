@@ -129,7 +129,7 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = 'home'
 
-LOGOOUT_REDIRECT_URL = 'home'
+LOGOOUT_REDIRECT_URL = 'index'
 
 MEDIA_ROOT = os.path.dirname(os.path.dirname(__file__))
 
