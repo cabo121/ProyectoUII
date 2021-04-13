@@ -44,10 +44,14 @@ class RegistrarPageView (CreateView):
 	model = User
 	template_name = 'registrar.html'
 	form_class =  UserCreationForm
-	Success_url = reverse_lazy('home')
+	success_url = reverse_lazy('registro_success')
+
+class RegistroPageView(ListView):
+	model = coronavirus
+	template_name = 'registro_success.html'
 
 class ResetPageView (CreateView):
 	model = User
 	form_class =  UserCreationForm
 	template_name = 'registration/reset.html'
-	Success_url = reverse_lazy('home')
+	success_url = reverse_lazy('home')
