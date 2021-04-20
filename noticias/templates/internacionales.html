@@ -24,6 +24,8 @@
 			        <p>{{ internacionales.fecha }}</p>
 			        <p>{{ internacionales.autor }}</p>
 			        <p>{{ internacionales.categoria }}</p>
+			        <p><a  class= "btn btn-primary btn-sm" href="{% url 'modificarNoticiaInter' internacionales.id  %}">Modificar</a></p>
+			        <p><a  class= "btn btn-danger btn-sm" href="{% url 'eliminarNoticiaInter' internacionales.id  %}">Eliminar</a></p>
                     <br>   
 				</div>
 	    		{% endfor %}

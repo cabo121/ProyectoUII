@@ -23,6 +23,8 @@
 			        <p>{{ coronavirus.fecha }}</p>
 			        <p>{{ coronavirus.autor }}</p>
 			        <p>{{ coronavirus.categoria }}</p>
+			        <p><a  class= "btn btn-primary btn-sm" href="{% url 'modificarNoticiaCoro' coronavirus.id  %}">Modificar</a></p>
+			        <p><a  class= "btn btn-danger btn-sm" href="{% url 'eliminarNoticiaCoro' coronavirus.id  %}">Eliminar</a></p>
                     <br>   
 				</div>
 	    		{% endfor %}

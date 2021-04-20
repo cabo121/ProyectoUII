@@ -24,6 +24,9 @@
 			        <p>{{ nacionales.fecha }}</p>
 			        <p>{{ nacionales.autor }}</p>
 			        <p>{{ nacionales.categoria }}</p>
+			        <p><a  class= "btn btn-primary btn-sm" href="{% url 'modificarNoticiaNacio' nacionales.id  %}">Modificar</a></p>
+			        <p><a  class= "btn btn-danger btn-sm" href="{% url 'eliminarNoticiaNacio' nacionales.id  %}">Eliminar</a></p>
+                    <br>
                     <br>   
 				</div>
 	    		{% endfor %}
