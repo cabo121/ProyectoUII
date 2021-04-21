@@ -24,9 +24,16 @@
 			        <p>{{ deportes.fecha }}</p>
 			        <p>{{ deportes.autor }}</p>
 			        <p>{{ deportes.categoria }}</p>
+
+			        {% if perms.noticias.change_deportes %}
 			        <p><a  class= "btn btn-primary btn-sm" href="{% url 'modificarNoticia' deportes.id  %}">Modificar</a></p>
+			        {% endif %}
+
+			        {% if perms.noticias.delete_deportes %}
 			        <p><a  class= "btn btn-danger btn-sm" href="{% url 'eliminarNoticia' deportes.id  %}">Eliminar</a></p>
                     <br>   
+                    {% endif %}
+                    
 				</div>
 	    		{% endfor %}
 		</div>

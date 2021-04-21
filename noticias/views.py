@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from .models import deportes,nacionales,internacionales,coronavirus
 from .forms import noticiaForm,CustomUser, coronaForm, deportesForm, NacionalesForm, interForm
+from django.contrib.auth.decorators import login_required, permission_required
 
 class HomePageView(ListView):
 	model = coronavirus
@@ -67,6 +68,7 @@ def registro_usuario (request):
 
 # FUNCIONES QUE AGREGAN DATOS A LOS MODELOS
 
+@permission_required('noticias.add_coronavirus')
 def agregarCorona (request):
 	data = {
 		'form':coronaForm()
@@ -82,6 +84,7 @@ def agregarCorona (request):
 
 	return render(request, 'agregarNoticia.html',data)
 
+@permission_required('noticias.add_deportes')
 def agregarDeportes (request):
 	data = {
 		'form':deportesForm()
@@ -97,13 +100,14 @@ def agregarDeportes (request):
 
 	return render(request, 'agregarNoticia.html',data)
 
+@permission_required('noticias.add_nacionales')
 def agregarNacionales (request):
 	data = {
-		'form':nacionalesForm()
+		'form':NacionalesForm()
 	}
 
 	if request.method == 'POST':
-		formulario = nacionalesForm(data=request.POST)
+		formulario = NacionalesForm(data=request.POST)
 		if formulario.is_valid():
 			formulario.save()
 			data['mensaje'] = 'Guardado correctamente'
@@ -112,6 +116,7 @@ def agregarNacionales (request):
 
 	return render(request, 'agregarNoticia.html',data)
 
+@permission_required('noticias.add_internacionales')
 def agregarInter (request):
 	data = {
 		'form':interForm()
@@ -136,6 +141,7 @@ def categoriasNoticias (request):
 
 # FUNCIONES QUE MODIFICAN Y ELIMINAN DATOS
 
+@permission_required('noticias.change_deportes')
 def modificarNoticia (request, id):
 
 	noticia = get_object_or_404(deportes, id=id)
@@ -153,6 +159,7 @@ def modificarNoticia (request, id):
 
 	return render (request, 'modificar.html', data)
 
+@permission_required('noticias.delete_deportes')
 def eliminarNoticia (request, id):
 	noticia = get_object_or_404(deportes, id=id)
 	noticia.delete()
@@ -160,7 +167,7 @@ def eliminarNoticia (request, id):
 	return redirect(to = "deportes")
 
 
-
+@permission_required('noticias.change_coronavirus')
 def modificarNoticiaCoro (request, id):
 
 	noticia = get_object_or_404(coronavirus, id=id)
@@ -178,14 +185,14 @@ def modificarNoticiaCoro (request, id):
 
 	return render (request, 'modificar.html', data)
 
+@permission_required('noticias.delete_coronavirus')
 def eliminarNoticiaCoro (request, id):
 	noticia = get_object_or_404(coronavirus, id=id)
 	noticia.delete()
 
 	return redirect(to = "content")
 
-
-
+@permission_required('noticias.change_nacionales')
 def modificarNoticiaNacio (request, id):
 
 	noticia = get_object_or_404(nacionales, id=id)
@@ -203,6 +210,7 @@ def modificarNoticiaNacio (request, id):
 
 	return render (request, 'modificar.html', data)
 
+@permission_required('noticias.delete_nacionales')
 def eliminarNoticiaNacio (request, id):
 	noticia = get_object_or_404(nacionales, id=id)
 	noticia.delete()
@@ -210,7 +218,7 @@ def eliminarNoticiaNacio (request, id):
 	return redirect(to = "nacionales")
 
 
-
+@permission_required('noticias.change_internacionales')
 def modificarNoticiaInter (request, id):
 
 	noticia = get_object_or_404(internacionales, id=id)
@@ -228,6 +236,7 @@ def modificarNoticiaInter (request, id):
 
 	return render (request, 'modificar.html', data)
 
+@permission_required('noticias.delete_internacionales')
 def eliminarNoticiaInter (request, id):
 	noticia = get_object_or_404(internacionales, id=id)
 	noticia.delete()
